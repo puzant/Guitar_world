@@ -1,0 +1,40 @@
+body { 
+    padding-top:20px;
+ }
+ .navbar { 
+     margin-bottom:20px;
+ }
+ img {
+     width: 22.7rem;
+     height: 300px;
+ }
+ footer {
+     margin-top: 20px;
+ }
+
+ .container {
+     background-color: #f8f8f8;
+     padding: 20px;
+ }
+
+ a.nav-link {
+     display: inline;
+ }
+
+ a.fb-Btn {
+     background-color: #3B5998;
+ }
+ 
+.tabs-images {
+   text-align: center;
+}
+
+ .tabs-images img {
+    width: 17.7rem;
+    height: 350px;
+    margin: 10px;
+ }
+
+ .section-2 {
+     margin-top: 40px;
+ }
