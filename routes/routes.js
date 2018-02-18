@@ -22,6 +22,10 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.get('/tabsLibrary', isLoggedIn, function(req, res) {
+        res.render('pages/tabs_library/tabs_library')
+    })
+
     //user profile-info
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render('pages/user_profile/profile', {
