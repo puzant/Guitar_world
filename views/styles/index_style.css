@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Bellefair|Roboto+Condensed');
+
 body { 
     padding-top:20px;
+    font-family: 'Roboto Condensed'  !important;
  }
  .navbar { 
      margin-bottom:20px;
@@ -35,6 +38,19 @@ body {
     margin: 10px;
  }
 
+.tabs-images img:hover {
+    cursor: pointer;
+}
+
  .section-2 {
      margin-top: 40px;
+ }
+
+ h1 {
+     display: inline;
+ }
+
+ .fa-music {
+     font-size: 2rem;
+     margin-left: 10px;
  }

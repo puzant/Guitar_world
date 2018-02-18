@@ -16,11 +16,23 @@ module.exports = function(app, passport) {
         res.render('pages/signup/signupPage', { message:req.flash('signupMessage')})
     });
 
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('pages/profile_page/profile', {
+    app.get('/user_home_page', isLoggedIn, function(req, res) {
+        res.render('pages/user_home_page/user_home_page', {
             user:req.user
         });
     });
+
+    //user profile-info
+    app.get('/profile', isLoggedIn, function(req, res) {
+        res.render('pages/user_profile/profile', {
+            user:req.user
+        });
+    })
+
+    //route to change the password
+    app.get('/change_password', isLoggedIn, function(req, res) {
+        res.render('pages/change_password/change_password');
+    })
 
     //facebook routes to send and retrive the informaiton
     app.get('/auth/facebook', passport.authenticate('facebook', {
@@ -29,7 +41,7 @@ module.exports = function(app, passport) {
 
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
+            successRedirect : '/user_home_page',
             failureRedirect : '/'
     }));
 
@@ -37,7 +49,7 @@ module.exports = function(app, passport) {
     app.get('/auth/google', passport.authenticate('google', {scope : ['profile', 'email']}));
 
     app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect : '/profile',
+        successRedirect : '/user_home_page',
         failureRedirect: '/'
     }));
 
@@ -48,13 +60,13 @@ module.exports = function(app, passport) {
 
     //the post section
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', // redirect to the secure profile section
+        successRedirect : '/user_home_page', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
 
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile',
+        successRedirect : '/user_home_page',
         failureRedirect : '/login',
         failureFlash : true
     }));
