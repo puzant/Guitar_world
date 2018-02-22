@@ -1,17 +1,19 @@
-var moongoose = requir('mongoose');
-var Schema    = mongoose.Schema;
+var mongoose = require('mongoose');
 
-var tabsSchema = new Schema ({
+var tabsSchema = mongoose.Schema ({
     name : String,
-    description : {
-        genre : String,
-        composer : String,
-        required : true
+    composer : {
+        type:String,
+        required: true
+    },
+    genre : {
+        type: String,
+        required: true
     },
     image: {
         type : String,
         required : true
     }
-})
+});
 
-module.exports = moongoose.model("tabs", tabsSchema);
+module.exports = mongoose.model("tabs", tabsSchema);

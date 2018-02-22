@@ -1,5 +1,5 @@
 module.exports = {
-        'facebookAuth' : {
+'facebookAuth' : {
     'clientID'     : '153303268804583',
     'clientSecret' : '3222cc04c7a635bb8d6423e115cf9707',
     'callbackURL'  : 'http://localhost:8080/auth/facebook/callback',
@@ -7,8 +7,8 @@ module.exports = {
     'profileFields' : ['id', 'email', 'name'] // For requesting permissions from Facebook API 
 },
 'twitterAuth' : {
-    'consumerKey'       : 'your-consumer-key-here',
-    'consumerSecret'    : 'your-client-secret-here',
+    'consumerKey'       : 'Lgn0r0rzHlb7V2vC1BK4gBQUQ',
+    'consumerSecret'    : 'IsGpvpjvlc3ZuV0kFuBgXPY5XsA33fFtgPZUHqYMBDBaGW85Y3',
     'callbackURL'       : 'http://localhost:8080/auth/twitter/callback'
 },
 

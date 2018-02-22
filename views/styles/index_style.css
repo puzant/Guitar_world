@@ -28,6 +28,9 @@ body {
      background-color: #3B5998;
  }
  
+ a.fb-Btn:hover {
+    background-color: #3B5998;
+ }
 .tabs-images {
    text-align: center;
 }
@@ -53,4 +56,13 @@ body {
  .fa-music {
      font-size: 2rem;
      margin-left: 10px;
+ }
+
+ a.twitter-btn {
+     background-color: #0084b4;
+     border: hidden
+ }
+ a.twitter-btn:hover {
+    opacity: .5;
+    background-color:#0084b4 
  }

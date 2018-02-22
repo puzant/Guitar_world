@@ -21,10 +21,11 @@ module.exports = function(app, passport) {
             user:req.user
         });
     });
-
-    app.get('/tabsLibrary', isLoggedIn, function(req, res) {
-        res.render('pages/tabs_library/tabs_library')
-    })
+    
+    // render the page with EJS, how to pass the data from the tabsRouter ?
+    // app.get('/tabsLibrary', function(req, res) {
+    //     res.render('pages/tabs_library/tabs_library')
+    // })
 
     //user profile-info
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -55,6 +56,14 @@ module.exports = function(app, passport) {
     app.get('/auth/google/callback', passport.authenticate('google', {
         successRedirect : '/user_home_page',
         failureRedirect: '/'
+    }));
+
+    //twitter auth routes
+    app.get('/auth/twitter', passport.authenticate('twitter'));
+
+    app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+        successRedirect : '/user_home_page',
+        failureRedirect : '/'
     }));
 
     app.get('/logout', function(req, res) {

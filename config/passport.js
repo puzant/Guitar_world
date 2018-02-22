@@ -3,6 +3,8 @@
 var localStrategy     = require('passport-local').Strategy
 var FacebookStrategy  = require('passport-facebook').Strategy
 var googleStrategy    = require('passport-google-oauth').OAuth2Strategy
+var TwitterStrategy   = require('passport-twitter').Strategy;
+
 //the user model
 var User         = require('../models/user');
 var configAuth   = require('./auth')
@@ -108,6 +110,36 @@ module.exports = function(passport) {
                     newUser.google.name  = profile.displayName;
                     newUser.google.email = profile.emails[0].value;
                     //save the user
+                    newUser.save(function(err) {
+                        if(err) throw err;
+                        return done(null, newUser);
+                    });
+                }
+            });
+        });
+    }));
+
+    //twitter authentiation code
+    passport.use(new TwitterStrategy ({
+        consumerKey     :   configAuth.twitterAuth.consumerKey,
+        consumerSecret  :   configAuth.twitterAuth.consumerSecret,
+        callbackURL     :   configAuth.twitterAuth.callbackURL
+    }, 
+    function(token, tokenSecret, profile, done) {
+        process.nextTick(function() {
+            User.findOne({'twitter.id' : profile.id}, function(err, user) {
+                if(err) return done(err);
+                //if user if found
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var newUser = new User();
+                    //set all the data
+                    newUser.twitter.id          = profile.id;
+                    newUser.twitter.token       = token;
+                    newUser.twitter.username    = profile.username;
+                    newUser.twitter.displayName = profile.displayName;
+                    //save it to the database
                     newUser.save(function(err) {
                         if(err) throw err;
                         return done(null, newUser);

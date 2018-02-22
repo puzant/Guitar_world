@@ -9,6 +9,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 //requiring the config file
 var configDB     = require('./config/database.js');
+
 // connect to the MLAB database via username and password
 mongoose.connect(configDB.database, function(err) {
     if(err) throw err;
@@ -32,6 +33,9 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/routes')(app,passport);
+
+app.use('/tabsLibrary', require('./routes/tabsRoutes'));
+
 
 app.listen(8080);
 console.log('server is online on port 8080');
