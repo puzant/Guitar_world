@@ -23,6 +23,7 @@ tabsRoutes.route('/')
     })
 })
 
+
 .get(function(req, res,next) {
     tab.find(function(err, tab) {
         if(err) res.status(500).send(err);

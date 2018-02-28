@@ -1,9 +1,61 @@
-img {
-    width: 17.7rem;
-    height: 350px;
+header {
+    padding: 10px;
+}
+header h3 {
+    font-size: 1.5rem;
 }
 
-.card {
-    margin: 30px;
-    display: block;
+div.gallery {
+    border: 1px solid #ccc;
+    opacity: .7;
+    border-radius:6px;
+    text-align: center;
+}
+
+div.gallery:hover {
+    transition: 0.5s;
+    opacity: 1;
+}
+
+div.gallery img {
+    width: 16.9rem;
+    height: 290px;
+    text-align: center;
+    
+}
+
+
+div.desc {
+    padding: 4px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    margin: 10px 0;
+    padding: 0 3px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }

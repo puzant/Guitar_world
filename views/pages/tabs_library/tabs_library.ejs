@@ -7,25 +7,74 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="../styles/tabs_library_style.css">
+    <link rel="stylesheet" href="../../styles/tabs_library_style.css">
     <title>Document</title>
 </head>
 <body>
         <% include ../../partials/user_page_navbar %>
 
-                         
-         <% for(let i = 0; i < tabs.length; i++) { %>
-          <a data-fancybox="gallery" href="<%= tabs[i].image %>"><img src="<%= tabs[i].image %>"></a>
-                <p><%= tabs[i].name %></p>
-                <p><%= tabs[i].composer %></p>
-                <p><%= tabs[i].genre %></p>
-        <% } %>
+
+        <header>
+            <h3 class="lead mt-4">Classical music arrangments</h3>
+             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add A new Tab</button> -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add a new Tab to the library</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Name:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Composer:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="form-control-label">Genre:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="form-control-label">Img Url:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                    <p>Or</p>
+                     <button class="btn btn-primary">Browse</button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </header>
 
 
-        <!-- React CDN for building the UI of the tabs library -->
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <% for(let i = 0; i < tabs.length; i++) { %>
+        <div class="responsive">
+            <div class="gallery">
+                <a href="<%= tabs[i].image %>" data-fancybox="gallery">
+                    <img src="<%= tabs[i].image %>">
+                    </a>
+              <div class="desc">Name: <%= tabs[i].name %></div>
+              <div class="desc">Composer: <%= tabs[i].composer %></div>
+              <div class="desc">Genre: <%= tabs[i].genre %></div>
+            </div>
+          </div>
+          <% } %> 
+        
 
+          
+
+          
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>

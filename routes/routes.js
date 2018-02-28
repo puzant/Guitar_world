@@ -21,11 +21,6 @@ module.exports = function(app, passport) {
             user:req.user
         });
     });
-    
-    // render the page with EJS, how to pass the data from the tabsRouter ?
-    // app.get('/tabsLibrary', function(req, res) {
-    //     res.render('pages/tabs_library/tabs_library')
-    // })
 
     //user profile-info
     app.get('/profile', isLoggedIn, function(req, res) {
@@ -83,6 +78,7 @@ module.exports = function(app, passport) {
         failureRedirect : '/login',
         failureFlash : true
     }));
+
 } 
 
 function isLoggedIn(req, res, next) {
