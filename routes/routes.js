@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
         });
     })
 
-    //route to change the password
+    // route to change the password
     app.get('/change_password', isLoggedIn, function(req, res) {
         res.render('pages/change_password/change_password');
     })
@@ -79,7 +79,14 @@ module.exports = function(app, passport) {
         failureFlash : true
     }));
 
+    
+// app.post('/changePassword', function(req, res) {
+//     console.log('hello');
+// })
+
+
 } 
+
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated())
