@@ -8,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
+require('dotenv').config()
+
 //requiring the config file
 var configDB     = require('./config/database.js');
 
