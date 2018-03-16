@@ -1,0 +1,80 @@
+ <!-- DOCTYPE HTML -->
+<html>
+<head>
+<title>sned us a message</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+class FormLabel extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+        render() {
+            return (
+                <label htmlFor={this.props.htmlFor}>{this.props.title}</label>
+            )
+        }
+}
+
+class Form extends React.Component {
+    constructor(props) {
+        super(props)
+         this.state = {
+            name:  '',
+            email: '',
+            subject: '',
+            message: ''
+        }  
+    }
+    
+        render() {
+            return (
+            <form className='react-form' onSubmit={this.handleSubmit}>
+                <a href="/"><i className="fas fa-arrow-left" ></i></a>
+             <h1>Say Hi!</h1>
+
+         <fieldset className='form-group'>
+        <FormLabel htmlFor='formName' title='Full Name:' />
+         <input id='formName' className='form-input' name='name' value={this.state.name} onChange={this.handleChange} />
+        </fieldset> 
+
+         <fieldset className='form-group'>
+        <FormLabel htmlFor='forEmail' title='Email:' />
+         <input id='formEmail' className='form-input' name='email' type='email' value={this.state.email} onChange={this.handleChange}  />
+        </fieldset>
+
+        <fieldset className='form-group'>
+        <FormLabel htmlFor='forSubject' title='Subject:' />
+        <input id='formSubject' className='form-input' name='subject' type='text'/>
+         </fieldset>
+
+        <fieldset className='form-group'>
+        <FormLabel htmlFor='forMessage' title='Message:' />
+        <textarea id='formMessage' className='form-textarea'></textarea>
+        </fieldset>
+
+        <div className='form-group'>
+        <input id='formButton' className='btn' type='submit' placeholder='Send message' />
+        </div>
+        </form>
+        )
+    }
+}
+
+ReactDOM.render(<Form />,  document.getElementById('root'));
+
+</script>
+</body>
+</html>

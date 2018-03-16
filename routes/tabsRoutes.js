@@ -4,7 +4,6 @@ var tabsRoutes = express.Router();
 //model schema for tabs
 var tab = require('../models/tabs');
 
-var test = 'hello';
 
 tabsRoutes.route('/')
 .post(function(req, res) {
@@ -32,5 +31,8 @@ tabsRoutes.route('/')
         }
     });
 });
+
+
+
 
 module.exports = tabsRoutes;

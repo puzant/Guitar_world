@@ -29,11 +29,6 @@ module.exports = function(app, passport) {
         });
     })
 
-    // route to change the password
-    app.get('/change_password', isLoggedIn, function(req, res) {
-        res.render('pages/change_password/change_password');
-    })
-
     //facebook routes to send and retrive the informaiton
     app.get('/auth/facebook', passport.authenticate('facebook', {
         scope : ['public_profile', 'email']
@@ -78,12 +73,6 @@ module.exports = function(app, passport) {
         failureRedirect : '/login',
         failureFlash : true
     }));
-
-    
-// app.post('/changePassword', function(req, res) {
-//     console.log('hello');
-// })
-
 
 } 
 

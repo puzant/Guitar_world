@@ -7,6 +7,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+
 //requiring the config file
 var configDB     = require('./config/database.js');
 
@@ -33,9 +34,9 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/routes')(app,passport);
-
+app.use('/emailRoutes', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
-
+// app.use('/changePasswords', require('./routes/changePassword'));
 
 app.listen(8080);
 console.log('server is online on port 8080');

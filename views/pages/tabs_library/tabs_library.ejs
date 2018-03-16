@@ -16,41 +16,54 @@
   <div class="container">
 
     <% include ../../partials/tabs_pages %>
-
-        <!-- <% for(let i = 0; i < tabs.length; i++) { %>
-        <div class="responsive">
-            <div class="gallery">
-                <a href="<%= tabs[i].image %>" data-fancybox="gallery">
-                    <img src="<%= tabs[i].image %>">
-                    </a>
-              <div class="desc">Name: <%= tabs[i].name %></div>
-              <div class="desc">Composer: <%= tabs[i].composer %></div>
-              <div class="desc">Genre: <%= tabs[i].genre %></div>
-            </div>
+    <div style="height: 100px;" class="row text-center text-lg-left">
+        <% for(let i=0; i<tabs.length; i++) { %>
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <a href="#" class="d-block mb-4 h-100">
+          <img src="<%= tabs[i].image %>" class="img-thumbnail">
+          </a>
           </div>
-          <% } %>  -->
-
-<nav aria-label="Page navigation">
-    <ul class="pagination mt-3">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
-  </nav>
-
-  </div> <!-- end of the container -->
-
+          <% } %>
+      </div>
+    </div>
           
 
-          
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
- 
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    var tabName;  
+    var composer;  
+    var genre;  
+    var imgUrl;
+    $("#btnsendemail").click(function() {
+      email      = $('#email').val(); 
+      tabName    = $("#txtname").val();  
+      composer   = $("#txtemail").val();  
+      genre      = $("#txtmobile").val();  
+      imgUrl     = $("#txtmessage").val(); 
+      $("#message").text("Sending Email please wait ..."); 
+      $.post('/emailRoutes', {
+        email   : email,
+        tabName : tabName,
+        composer : composer,
+        genre : genre,
+        imgUrl : imgUrl
+      }, function(data) {
+        if(data == 'sent') {
+          $('#message').html("email has been send successfully")
+        }
+      }) 
+  })
+})
+
+
+</script>
+
 </body>
 </html>
