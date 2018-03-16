@@ -40,5 +40,5 @@ app.use('/emailRoutes', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
 // app.use('/changePasswords', require('./routes/changePassword'));
 
-app.listen(8080);
-console.log('server is online on port 8080');
+var port = Number(process.env.PORT || 3000);
+app.listen(port)
