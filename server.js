@@ -40,5 +40,6 @@ app.use('/emailRoutes', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
 // app.use('/changePasswords', require('./routes/changePassword'));
 
-var port = Number(process.env.PORT || 3000);
+
+var port = process.env.PORT || 8080;
 app.listen(port)
