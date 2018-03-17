@@ -21,10 +21,24 @@
             <div class="col-lg-3 col-md-4 col-xs-6 thumbnail">
                 <a href="<%= tabs[i].image %>" class="d-block mb-4 h-100" data-fancybox="gallery">
           <img src="<%= tabs[i].image %>" alt="" class="img-thumbnail">
+          <div class="overlay">
+            <div class="text">
+              <div class="">Name: <%= tabs[i].name %></div>
+              <div class="">Composer: <%= tabs[i].composer %></div>
+              <div class="">Genre: <%= tabs[i].genre %></div>
+              </div>              
+            </div>
           </a>
           </div>
           <% } %>
       </div>
+      <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
     </div>
           
 

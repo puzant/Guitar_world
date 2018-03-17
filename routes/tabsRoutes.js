@@ -24,7 +24,7 @@ tabsRoutes.route('/')
 
 
 .get(function(req, res,next) {
-    tab.find(function(err, tab) {
+    tab.find().limit(0).exec(function(err, tab) {  //limit the data from mongodb
         if(err) res.status(500).send(err);
         else {
         res.render('pages/tabs_library/tabs_library',{tabs: tab} );

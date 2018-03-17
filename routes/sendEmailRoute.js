@@ -15,7 +15,7 @@ emailRoute.route('/')
     }
 });
     var mailOptions = {
-        from : 'set1b@namag.com',
+        from : 'puzant24@gmail.com',
         to: 'PBAKJEJIAN@hotmail.com',
         subject: '5th nodemailer tests',
         html:'<p>testing with post request:)</p>'
