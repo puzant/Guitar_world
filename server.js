@@ -7,9 +7,9 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var favicon      = require('express-favicon');
 
 require('dotenv').config()
-
 //requiring the config file
 var configDB     = require('./config/database.js');
 
@@ -21,6 +21,7 @@ mongoose.connect(configDB.database, function(err) {
 
 require('./config/passport')(passport); //  passport for configuration
 app.use(express.static(__dirname + '/views'));
+app.use(favicon(__dirname + '/views/assets/download.png'));
 
 
 app.use(morgan('dev')); // log every request to the console
