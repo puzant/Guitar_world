@@ -22,7 +22,7 @@ mongoose.connect(configDB.database, function(err) {
 
 require('./config/passport')(passport); //  passport for configuration
 app.use(express.static(__dirname + '/views'));
-app.use(favicon(__dirname + '/views/assets/download.png'));
+app.use(favicon(__dirname + '/download.png'));
 
 
 app.use(morgan('dev')); // log every request to the console
