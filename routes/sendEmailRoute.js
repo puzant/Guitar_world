@@ -5,27 +5,31 @@ var xoauth2      = require('xoauth2');
 var emailRoute = express.Router();
 
 emailRoute.route('/')
+.get(function(req,res) {
+    res.render('pages/contact_us/index.ejs')
+})
+
 .post(function(req, res) {
     // using node mailer
     var transport = nodemailer.createTransport({
         service:'gmail',
+        host:"smtp.gmail.com",
         auth : {
             user: 'puzant24@gmail.com',
             pass: 'puzant462442'
     }
 });
     var mailOptions = {
-        from : 'puzant24@gmail.com',
+        from : req.body.email,
         to: 'PBAKJEJIAN@hotmail.com',
-        subject: '5th nodemailer tests',
-        html:'<p>testing with post request:)</p>'
-        // html:'<div>tab name: '+ req.query.tabName +'</div><div>Composer: '+ req.query.composerName +'</div><div>Genre: '+ req.query.genreName +'</div><div>Img Url: '+ req.query.imageURL +'</div>'  
+        subject: req.body.subject,
+        html: req.body.message
 
     };
 
     transport.sendMail(mailOptions, function(error, info) {
-        if(error) res.send(eror);
-        else res.send("sent");
+        if(error) res.send(error);
+        else console.log("sent");
     })
 })
 

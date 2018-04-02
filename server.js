@@ -9,6 +9,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var favicon      = require('serve-favicon');
+var fs           = require('fs');
+var http         = require('http');
+var multer       = require('multer');
+var upload       = multer()
+var os           = require('os');
+var serveStatic  = require('serve-static');
+var filehandler  = require('filehandler');
 
 require('dotenv').config()
 //requiring the config file
@@ -24,10 +31,11 @@ require('./config/passport')(passport); //  passport for configuration
 app.use(express.static(__dirname + '/views'));
 app.use(favicon(__dirname + '/download.png'));
 
-
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(upload.array());
 
 //ejs view engine
 app.set("view engine", "ejs");
@@ -40,8 +48,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./routes/routes')(app,passport);
 app.use('/emailRoutes', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
-// app.use('/changePasswords', require('./routes/changePassword'));
-
+app.use('/changePassword', require('./routes/changePassword'));
 
 var port = process.env.PORT || 8080;
 app.listen(port)
