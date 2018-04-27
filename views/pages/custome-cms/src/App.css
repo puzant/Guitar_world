@@ -1,0 +1,11 @@
+.container {
+    margin-top:10px;
+}
+
+input[type="file"] {
+ display: block;
+}
+
+.btn.btn-success {
+    margin-top: 10px;
+}

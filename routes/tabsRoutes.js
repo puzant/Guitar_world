@@ -34,5 +34,4 @@ tabsRoutes.route('/')
 
 
 
-
 module.exports = tabsRoutes;

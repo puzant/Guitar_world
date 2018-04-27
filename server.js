@@ -16,6 +16,7 @@ var upload       = multer()
 var os           = require('os');
 var serveStatic  = require('serve-static');
 var filehandler  = require('filehandler');
+var bcrypt       = require('bcrypt-nodejs');
 
 require('dotenv').config()
 //requiring the config file
@@ -25,6 +26,10 @@ var configDB     = require('./config/database.js');
 mongoose.connect(configDB.database, function(err) {
     if(err) throw err;
     console.log('connected to the remote MLAB database!');
+})
+
+app.get('/test', function(req, res) {
+    res.send('request recived');
 })
 
 require('./config/passport')(passport); //  passport for configuration

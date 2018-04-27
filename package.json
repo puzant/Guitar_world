@@ -2,7 +2,8 @@
   "name": "node-authentication",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "concurrently --kill-others-on-fail"
   },
   "dependencies": {
     "bcrypt-nodejs": "latest",
