@@ -13,14 +13,6 @@ tabsRoutes.route('/')
     })
 })
 
-//update a document
-// .put(function(req, res) {
-//     tab.findByIdAndUpdate(req.params.id,req.body,{new:true},function(err, tab) {
-//         if(err) res.status(500).send(err);
-//         else res.send(tab);
-//     })
-// })
-
 .get(function(req, res,next) {
     tab.find().limit(0).exec(function(err, tab) {  //limit the data from mongodb
         if(err) res.status(500).send(err);
@@ -30,8 +22,19 @@ tabsRoutes.route('/')
     });
 });
 
-// tabsRoutes.route('/:id')
+tabsRoutes.route('/:id')
+.delete(function(req, res) {
+    tab.findByIdAndRemove(req.params.id, function(err){
+        if(err) res.status(500).send(err);
+        else res.send('item deleted successfully');
+    })
+})
 
-
+.put(function(req, res) {
+    tab.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, tab) {
+        if(err) res.status(500).send(err);
+        else res.send(tab)
+    })
+})
 
 module.exports = tabsRoutes;

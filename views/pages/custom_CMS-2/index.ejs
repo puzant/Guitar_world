@@ -1,115 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../styles/custom-CMS-style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../../styles/custom-CMS-style.css">
+  <title>Document</title>
 </head>
+
 <body>
-        <div class="container mt-4">
-                <h2>Upload Images to the database</h2>
-                <form action="/tabsLibrary" method="POST"> 
-                <div class="form-group">
-                <label>Name:</label>
-                <input name="name"  type="text" class="form-control" id="usr"></input>
-          
-                <label>Composer:</label>
-                <input name="composer" type="text" class="form-control" id="usr"></input>
-          
-                <label>genre:</label>
-                <input  name="genre"  type="text" class="form-control" id="usr"></input>
-          
-                <br />
-                <label>add the image URL:</label>
-                <input  name="image" type="text" class="form-control" id="usr"></input>
-          
-                <br />
-                <button type="submit" class="btn btn-success">Upload</button>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Go the main website</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Database configurations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">settings</a>
+    </li>
+  </ul>
+
+  <div class="container mt-4">
+    <h2>Upload Images to the database</h2>
+    <form action="/tabsLibrary" method="POST">
+      <div id="post-tabs" class="form-group">
+        <label>Name:</label>
+        <input name="name" type="text" class="form-control" id="usr"></input>
+
+        <label>Composer:</label>
+        <input name="composer" type="text" class="form-control" id="usr"></input>
+
+        <label>genre:</label>
+        <input name="genre" type="text" class="form-control" id="usr"></input>
+
+        <br />
+        <label>add the image URL:</label>
+        <input name="image" type="text" class="form-control" id="usr"></input>
+
+        <br />
+        <button type="submit" class="btn btn-success">Upload</button>
+      </div>
+    </form>
+
+    <div class="row mt-6">
+      <div class="col">
+        <hr>
+        <h3>Retrive all the documents to update them</h3>
+        <button class="btn btn-primary">Show Data</button>
+        <button class="btn btn-danger">hide Data</button>
+
+        <% for(let i=0; i<tabs.length; i++) { %>
+
+          <div class="col-xs-12">
+            <div class="card mt-4">
+              <div class="card-image">
+                <a href="#" type="button" class="btn">
+                  <img src="https://images.vexels.com/media/users/3/131548/isolated/preview/9e36529b6e31cc4bae564fc2d14a8d0f-music-note-circle-icon-by-vexels.png"
+                    alt="user-image" />
+                </a>
               </div>
-            </form>
-          
-            <div class="row mt-6">
-              <div class="col">
-                  <hr>
-                  <h3>Retrive all the documents to update them</h3>
-                <button class="btn btn-primary">Show Data</button>
-                <button class="btn btn-danger">hide Data</button>
-
-                <% for(let i=0; i<tabs.length; i++) { %>
-
-                <div class="col-xs-12">
-                  <div class="card mt-4">
-                    <div class="card-image">
-                      <a href="#" type="button" class="btn">
-                        <img src="<%= tabs[i].image %>" alt="user-image" />
-                      </a>
-                    </div>
-                    <div class="card-modal">Take a look at my Profile!</div>
-                    <div class="card-info">
-                      <div class="name">
-                          <div class="">Name: <%= tabs[i].name %></div>
-                      </div>
-                      <hr>
-                      <div class="content">
-                        <p class="composer">
-                          <b>composer:</b>  <%= tabs[i].composer %>
-                        </p>
-                        <p class="genre"><b>genre:  <%= tabs[i].genre %>
-                          <br><br>
-                          <button class="btn btn-success">Update this tab</button>
-                          <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#exampleModal">delete this tab</button>
-
-                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                   <h3>do you really want to delete this tab</h3>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button id="deleteTab" type="button" class="btn btn-primary">Yeah, I Do!</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-
-                      </div>
-                    </div>
+              <div class="card-modal">Take a look at my Profile!</div>
+              <div class="card-info">
+                <div class="name">
+                  <div class="name">Name:
+                    <%= tabs[i].name %>
                   </div>
                 </div>
-                <% } %>
+                <hr>
+                <div class="content">
+                  <p class="composer">
+                    composer:
+                    <%= tabs[i].composer %>
+                  </p>
+                  <p class="genre">genre:
+                    <%= tabs[i].genre %>
+                  </p>
+                  <p data-id="<%= tabs[i]._id %>" class="id">
+                    <%= tabs[i]._id %>
+                  </p>
 
-                
+                  <!-- action button -!-->
+                  <button type="button" class="btn btn-success upload-btn">Update this tab</button>
+                  <% include ../../partials/updateTabs-form %>
+                  
+                    <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#exampleModal">delete this tab</button>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <h3>do you really want to delete this tab</h3>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="deleteTab" type="button" class="btn btn-primary">Yeah, I Do!</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
+          <% } %>
 
-         <!-- <p class="name"></p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <p class="name"></p>
          <p class="composer"></p>
          <p class="genre"></p>
          <p class="image"></p> -->
-         
-    
 
-          <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="../functions/get_data.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
