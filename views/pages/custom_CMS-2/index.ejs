@@ -17,6 +17,9 @@
       <a class="nav-link" href="/">Go the main website</a>
     </li>
     <li class="nav-item">
+      <a href="/" class="nav-link"  data-toggle="tooltip" title="upload Chords info">Chords Index</a> 
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="#">Database configurations</a>
     </li>
     <li class="nav-item">
@@ -82,9 +85,9 @@
                   <p data-id="<%= tabs[i]._id %>" class="id">
                     <%= tabs[i]._id %>
                   </p>
-
+                  
                   <!-- action button -!-->
-                  <button type="button" class="btn btn-success upload-btn">Update this tab</button>
+                  <button type="button" class="btn btn-success upload-btn" data-toggle="modal" data-target="#Modal2">Update this tab</button>
                   <% include ../../partials/updateTabs-form %>
                   
                     <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#exampleModal">delete this tab</button>

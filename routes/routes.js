@@ -5,6 +5,13 @@ module.exports = function(app, passport) {
         res.render("pages/index");
     });
 
+    //route to access the changePassword page
+    app.get('/change-password',isLoggedIn, function(req,res) {
+        res.render('pages/change_password/change_password',{
+            user:req.user
+        })
+    })
+
     //route for uploading images
     app.get('/upload', function(req, res) {
         tab.find(function(err, tab) {
@@ -13,17 +20,6 @@ module.exports = function(app, passport) {
             res.render("pages/custom_CMS-2/index", {tabs:tab});
         })
     })
-
-    //special get request to retrive data to to updata them from the custom-CMS
-    // app.get('/getData', function(req, res) {
-    //     tabs.find(function(err, tabs) {
-    //         if(err) throw err;
-    //         else res.send(tabs);
-        
-    //     })
-    // })
-    //************************************************* */
-
 
     app.get('/about', function(req, res) {
         res.render('pages/about');

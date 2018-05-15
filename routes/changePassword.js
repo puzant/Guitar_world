@@ -3,30 +3,18 @@ var changePassword = express.Router();
 var user = require('../models/user');
 var bcrypt   = require('bcrypt-nodejs');
 
-changePassword.route('/')
-.get(function(req, res) {
-    res.render('pages/change_password/change_password')
-})
-
-
 // update user password
+// changePassword.route('/:id')
+changePassword.route('/')
 .post(function(req, res) {
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(req.body.password, salt, function(err, hash) {
-            // Store the hashed password in the DB
-            if(err) throw err;
-            else console.log(hash);
-        });
-    });
-    // user.findByIdAndUpdaet(
-    //     {id:_id},
-    //     {$set:{local:{password:hash}}},
-    //     {new:true},
-    //     function(err, doc) {
+    console.log(req.body);
+    // bcrypt.genSalt(10, function(err, salt) {
+    //     bcrypt.hash(req, salt, function(err, hash) {
+    //         // Store the hashed password in the DB
     //         if(err) throw err;
-    //         else console.log(doc)
-    //     }
-    // )
+    //         else console.log(hash);
+    //     });
+    // });
 })
 
 module.exports = changePassword;
