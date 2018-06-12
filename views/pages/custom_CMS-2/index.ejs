@@ -7,28 +7,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="../../styles/custom-CMS-style.css">
   <title>Document</title>
 </head>
 
 <body>
-  <ul class="nav justify-content-end">
-    <li class="nav-item">
-      <a class="nav-link" href="/">Go the main website</a>
-    </li>
-    <li class="nav-item">
-      <a href="/" class="nav-link"  data-toggle="tooltip" title="upload Chords info">Chords Index</a> 
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Database configurations</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">settings</a>
-    </li>
-  </ul>
+ 
 
   <div class="container mt-4">
-    <h2>Upload Images to the database</h2>
+
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/">Go the main website</a>
+        <a href="#">Database configurations</a>
+        <a href="#">settings</a>
+        <a href="">Page scrapper</a>
+      </div>
+    
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <span style="font-size:30px;">Upload Images to the database (tabs schema)</span>      
+
     <form action="/tabsLibrary" method="POST">
       <div id="post-tabs" class="form-group">
         <label>Name:</label>
@@ -49,6 +50,17 @@
       </div>
     </form>
 
+    <hr>
+
+    <%= typeof msg != 'undefined' ? msg : '' %>
+    <form action="/upload-image" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="exampleFormControlFile1">add images as binary to mongodb collection</label>
+          <input name="myImage" type="file" class="form-control-file" id="exampleFormControlFile1">
+          <button class="btn btn-primary upload mt-2" type="submit">Upload</button>
+        </div>
+      </form>
+
     <div class="row mt-6">
       <div class="col">
         <hr>
@@ -66,7 +78,7 @@
                     alt="user-image" />
                 </a>
               </div>
-              <div class="card-modal">Take a look at my Profile!</div>
+              <div class="card-modal"></div>
               <div class="card-info">
                 <div class="name">
                   <div class="name">Name:
@@ -123,11 +135,6 @@
     </div>
   </div>
 
-  <!-- <p class="name"></p>
-         <p class="composer"></p>
-         <p class="genre"></p>
-         <p class="image"></p> -->
-
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -139,6 +146,17 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+    <script>
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+      }
+      
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+      }
+      </script>
+    
 </body>
 
 </html>
