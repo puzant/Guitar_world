@@ -18,45 +18,23 @@ var filehandler  = require('filehandler');
 var bcrypt       = require('bcrypt-nodejs');
 var request      = require('request');
 var cheerio      = require('cheerio');
+const methodOverRide = require('method-override');
+const crypto     = require('crypto')
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid       = require('gridfs-stream');
+
 
 require('dotenv').config()
 //requiring the config file
 var configDB     = require('./config/database.js');
 
 // connect to the MLAB database via username and password
-mongoose.connect(configDB.database, function(err) {
+var conn =  mongoose.connect(configDB.database, function(err) {
     if(err) throw err;
     console.log('connected to the remote MLAB database!');
 })
 
-app.get('/test', function(req, res) {
-    res.send('request recived');
-})
-
-app.get('/scrape', function(req, res) {    //the scrapper route to capture the HTML
-    url = 'https://www.justinguitar.com/guitar-lessons/the-8-essential-beginner-chords-ch-110'; //scrap for the images
-
-    request(url, function(error, response, html) {
-        if(!error) {
-            var $ = cheerio.load(html);
-            var title, release, rating
-            var json = {
-                image: ""
-            };
-            $('.jt__rowAlign').filter(function() {
-                var data = $(this)
-                ;
-                image = data.children().attr('src');
-                json.image = image;
-            })
-        }
-        fs.writeFile('output.json', JSON.stringify(json, null, 4), function(error) {
-            console.log('File successfully written! - Check your project directory for the output.json file');
-        });
-        res.send('Check your console!')
-    })
-})
-
+app.use(methodOverRide('_method'))
 require('./config/passport')(passport); //  passport for configuration
 app.use(express.static(__dirname + '/views'));
 app.use(favicon(__dirname + '/download.png'));
@@ -65,7 +43,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
 app.use(bodyParser.urlencoded({extended:true}));
-// app.use(upload.array());
+
 
 //ejs view engine
 app.set("view engine", "ejs");
@@ -76,10 +54,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/routes')(app,passport);
-app.use('/emailRoutes', require('./routes/sendEmailRoute'));
+app.use('/contactUs', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
 app.use('/changePassword', require('./routes/changePassword'));
-app.use('/upload-image', require('./routes/uploadImages'));
+// app.use('/uploadImages', require('./routes/uploadImages'));
 
 var port = process.env.PORT || 8080;
-app.listen(port)
+app.listen(port);

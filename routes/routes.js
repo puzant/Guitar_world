@@ -1,4 +1,6 @@
 //route.js
+var fs = require('fs');
+
 module.exports = function(app, passport) {
     let tab = require('../models/tabs')
     app.get('/', function(req, res) {
@@ -94,6 +96,14 @@ module.exports = function(app, passport) {
         failureRedirect : '/login',
         failureFlash : true
     }));
+
+    app.get('/files', function(req, res) {
+        var tempfile = './public/flamenco-tab.pdf';
+        fs.readFile(tempfile,function(err, data) {
+            res.contentType('application/pdf');
+            res.send(data);
+        })
+    })
 
 } 
 

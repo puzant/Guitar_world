@@ -37,3 +37,11 @@
   font-size: 16px;
   padding: 16px 32px;
 }
+
+.display-4 {
+  display: inline;
+}
+
+.fa-user {
+  color: #ffe44f;
+}

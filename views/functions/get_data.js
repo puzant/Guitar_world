@@ -2,6 +2,14 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
 $('.card').hide();
 $('.btn.btn-danger').hide()
 
@@ -36,24 +44,9 @@ $('#update').click(function() {
     console.log(ID)
 })
 
-// $("#update").click(function() {
-//     var ID = $('.id').attr("data-id");
-//     var name = $("input[name=name]").val();
-//     var composer = $("input[name=composer]").val();
-//     var genre = $("input[name=genre]").val();
-//     var image = $("input[name=image]").val();
-//     var data = {
-//         name: name,
-//         composer: composer,
-//         genre: genre,
-//         image: image
-//     }
-//     $.ajax({
-//         type:'PUT', 
-//         data: data,
-//         url: '/tabsLibrary/' + id,
-//         success: function(res) {
-//             alert('itme was updated');
-//         }
-//     })
-// })
+$('.switch').change(function() {     //toggle function to change the background-color
+    $('body').toggleClass('night')
+    $('.card').toggleClass('night');
+    $('input[type="text"]').toggleClass('night');
+    // $('.fa-sun').Toggle();
+})
