@@ -23,21 +23,10 @@ $('.btn.btn-danger').click(function() {
     $('.btn.btn-danger').fadeOut(2000)    
 })
 
-$('#delete').click(function() {
-    //do an ajax request to delete this tab
-    var id = $('.id').attr("data-id")
-    console.log(id);
-    $.ajax({
-        type:'DELETE',
-        url:'/tabsLibrary/' + id,
-        success: function(res) {
-            alert('item was deleted');
-        },
-        error: function() {
-            alert('there was an error');
-        }
-    })
+$("#delete").on('click', function() {
+    alert('hello delete');
 })
+
 
 $('#update').click(function() {
     let ID = $('.id').attr('data-id')
