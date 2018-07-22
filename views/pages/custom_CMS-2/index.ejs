@@ -5,10 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="../../styles/custom-CMS-style.css">
   <title>Document</title>
 </head>
@@ -25,13 +23,16 @@
 
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="/">Go the main website</a>
-      <a href="#" id="opener">Database configurations</a>
-      <a href="#">settings</a>
+      <a href="/"> <i class="fas fa-home"></i>Home</a>
+      <hr class="fade-2">
+      <a href="/backup" class="backup"> <i class="fas fa-database"></i> Backup</a>
+      <hr class="fade-2">
+      <a href="#"> <i class="fas fa-cogs"></i> Settings</a>
+      <hr class="fade-2">
     </div>
 
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    <span style="font-size:30px;">Upload Images to the database (tabs schema)</span>
+    <span style="font-size:30px;">Upload Images to the database</span>
 
     <form action="/tabsLibrary" method="POST" class="submit">
       <div id="post-tabs" class="form-group">
@@ -50,6 +51,7 @@
 
         <br />
         <button type="submit" class="btn btn-success">Upload</button>
+        <span class="X btn btn-dark">cancel</span>
       </div>
     </form>
 
@@ -90,9 +92,44 @@
                       <%= tabs[i]._id %>
                     </p>
 
-                    <!-- action button -!-->
                     <button type="button" class="btn btn-success upload-btn" data-toggle="modal" data-target="#Modal2">Update this tab</button>
-                    <% include ../../partials/updateTabs-form %>
+                    <!-- <% include ../../partials/updateTabs-form %> -->
+                    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update the Tab</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="name" class="col-form-label">Name:</label>
+                                            <input type="text" name="name" class="form-control" id="tab-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Composer" class="col-form-label">Composer:</label>
+                                            <input type="text"  name="composer" class="form-control" id="composer-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="genre" class="col-form-label">Genre:</label>
+                                            <input type="text"  name="genre" class="form-control" id="genre-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Composer" class="col-form-label">Image:</label>
+                                            <input type="text"  name="image" class="form-control" id="image-url">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button id="update"  class="btn btn-primary">Update Tab</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                       <button class="btn btn-warning" id="delete" type="button" data-toggle="modal">delete this tab</button>
 
@@ -114,10 +151,6 @@
               </div>
             </div>
             <% } %>
-
-
-        <!-- </div>
-      </div> -->
   </div>
 
 

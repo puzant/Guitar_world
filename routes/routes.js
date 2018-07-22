@@ -26,11 +26,6 @@ module.exports = function(app, passport) {
     app.get('/about', function(req, res) {
         res.render('pages/about');
     })
-
-    app.get('/guitar_videos', function(req, res) {
-        res.render('pages/guitar_videos/index')
-    })
-
     app.get('/login', function(req, res) {
         res.render('pages/login/loginPage', { message: req.flash('loginMessage') });
     });

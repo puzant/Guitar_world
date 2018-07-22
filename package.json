@@ -20,6 +20,7 @@
     "filehandler": "0.0.0",
     "gridfs-stream": "^1.1.1",
     "method-override": "^2.3.10",
+    "mongodb-backup": "^1.6.9",
     "mongoose": "^4.13.14",
     "morgan": "~1.7.0",
     "multer": "^1.3.0",

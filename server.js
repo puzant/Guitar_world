@@ -12,17 +12,12 @@ var favicon      = require('serve-favicon');
 var fs           = require('fs');
 var http         = require('http');
 var multer       = require('multer');
-var os           = require('os');
 var serveStatic  = require('serve-static');
-var filehandler  = require('filehandler');
 var bcrypt       = require('bcrypt-nodejs');
 var request      = require('request');
 var cheerio      = require('cheerio');
-const methodOverRide = require('method-override');
-const crypto     = require('crypto')
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid       = require('gridfs-stream');
-
+var crypto       = require('crypto');
+var backup       = require('mongodb-backup');
 
 require('dotenv').config()
 //requiring the config file
@@ -34,7 +29,6 @@ var conn =  mongoose.connect(configDB.database, function(err) {
     console.log('connected to the remote MLAB database!');
 })
 
-app.use(methodOverRide('_method'))
 require('./config/passport')(passport); //  passport for configuration
 app.use(express.static(__dirname + '/views'));
 app.use(favicon(__dirname + '/download.png'));
@@ -58,6 +52,19 @@ app.use('/contactUs', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
 app.use('/changePassword', require('./routes/changePassword'));
 // app.use('/uploadImages', require('./routes/uploadImages'));
+
+app.get('/backup', function(req, res) {    //route to download mongodb collection
+    res.writeHead(200, {
+        'Content-Type': 'application/x-tar' // force header for tar download
+      });
+
+    backup({
+        uri: 'mongodb://puzant:puzant462442@ds235388.mlab.com:35388/guitar_world_db',
+        collections:['tabs'],
+        stream:res
+    })
+    
+})
 
 var port = process.env.PORT || 8080;
 app.listen(port);
