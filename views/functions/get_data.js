@@ -24,7 +24,7 @@ $('.btn.btn-danger').click(function() {
 })
 
 $("#delete").on('click', function() {
-    var id = $('.id').attr('data-id');
+    var id = $(this).find( 'p.id' ).attr('data-id');
     console.log(id);
 })
 
@@ -62,3 +62,4 @@ $(".X").click(function() {
     $(this).closest('.submit').find("input[type=text]").val("");
         $('.X').fadeOut();
 });
+

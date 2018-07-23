@@ -9,6 +9,10 @@
     width:100%;
 }
 
+.fa-file-pdf {
+  color:red
+}
+
 .text {
     color: #fff;
     font-size: 15px;

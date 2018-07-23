@@ -2,10 +2,7 @@
 @import url("//fonts.googleapis.com/css?family=Lato:400,300,100");
 @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
 /* General */
-* {
-  box-sizing: border-box;
-  font-family: 'Lato';
-}
+
 
 body {
   font-size: 16px;
@@ -19,6 +16,8 @@ body {
   margin-top: 5px;
   height: 100px;
 }
+
+
 
 /* Card */
 .card {
@@ -180,8 +179,8 @@ body {
   margin: 0 0 15px;
 }
 
-body {
-  font-family: "Lato", sans-serif;
+* {
+  font-family: "Lato";
 }
 
 hr {
@@ -309,7 +308,14 @@ input:checked + .slider:before {
   color: #fff;
 }
 
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+footer {
+margin-top:40px;
+ text-align: center;
+ font-style: italic
 }

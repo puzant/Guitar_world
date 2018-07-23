@@ -9,18 +9,27 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="../../styles/custom-CMS-style.css">
   <title>Document</title>
+  <script type="text/javascript">
+    var slowLoad = window.setTimeout( function() {
+        alert( "the page is taking its sweet time loading" );
+    }, 10 );
+
+    window.addEventListener( 'load', function() {
+        window.clearTimeout( slowLoad );
+    }, false );
+</script>
 </head>
 
 <body>
 
   <div class="container mt-4">
   
+
       <label class="switch" data-toggle="tooltip" data-placement="top" title="Night Mode">
           <input type="checkbox">
           <span class="slider round night-mode"></span>
         </label>
     
-
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="/"> <i class="fas fa-home"></i>Home</a>
@@ -29,7 +38,11 @@
       <hr class="fade-2">
       <a href="#"> <i class="fas fa-cogs"></i> Settings</a>
       <hr class="fade-2">
+      <a href="" data-toggle="modal" data-target="#exampleModalCenter"> <i class="fas fa-info-circle"></i> Info</a>
+      <hr class="fade-2">
     </div>
+
+    <% include ../../partials/CMS-DB-info %> 
 
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     <span style="font-size:30px;">Upload Images to the database</span>
@@ -104,7 +117,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form class="upload-form">
                                         <div class="form-group">
                                             <label for="name" class="col-form-label">Name:</label>
                                             <input type="text" name="name" class="form-control" id="tab-name">
@@ -151,9 +164,10 @@
               </div>
             </div>
             <% } %>
-  </div>
 
-
+<footer>
+<h4>Made with <i style="color:red" class="fas fa-heart"></i> and Powered by <i style="color:green" class="fab fa-node-js"></i> </h4>
+</footer>
 
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
