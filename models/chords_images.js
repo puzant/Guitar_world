@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 
-var Chords_images = mongoose.Schema ({
- path: {type:String},
- caption: {type:String}
+var chordsImages = mongoose.Schema({
+    name:String,
+    image: {
+        type:String,
+        required:true
+    },
+    description: String
 });
 
-module.exports = mongoose.model("Chords", Chords_images);
+module.exports = mongoose.model("chords", chordsImages);

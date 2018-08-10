@@ -63,3 +63,18 @@ $(".X").click(function() {
         $('.X').fadeOut();
 });
 
+// $('.btn-default').click(function() {
+//     var data = {
+//         name : $('.chord-name').val() ,
+//         imgUrl : $('.chord-url').val(),
+//         description : $('.chord-description').val()
+//     }
+//     console.log(data)
+//     $.ajax({
+//         type:"POST",
+//         dataType: 'json',
+//         contentType: 'application/json',
+//         url:'/chordsUpload',
+//         Data:JSON.stringify(data)
+//     })
+// })

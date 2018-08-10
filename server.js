@@ -51,7 +51,7 @@ require('./routes/routes')(app,passport);
 app.use('/contactUs', require('./routes/sendEmailRoute'));
 app.use('/tabsLibrary', require('./routes/tabsRoutes'));
 app.use('/changePassword', require('./routes/changePassword'));
-// app.use('/uploadImages', require('./routes/uploadImages'));
+app.use('/chordsUpload', require('./routes/chordsImages'));
 
 app.get('/backup', function(req, res) {    //route to download mongodb collection
     res.writeHead(200, {
