@@ -1,4 +1,4 @@
-#simple CRUD App with nodeJs and Monogodb
+# simple CRUD App with nodeJs and Monogodb
 
 passportJs is used for authentication and Ejs for templating
 
